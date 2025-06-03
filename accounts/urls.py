@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import *
 
 urlpatterns = [
     path('', views.IndexOgani, name='IndexOgani'),
@@ -9,6 +10,11 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('blogDetail/', views.blogDetail, name='blogDetail'),
     path('shopGrid/', views.ShopGrid, name='shopGrid'),
+    
+    path('Pros/', ProductsListCreate.as_view(), name='ProList'),
+    path('Pros/<int:pk>/', ProductsDetail.as_view(), name='ProDetail'),
+    path('categoryLC/', CategoryListCreate.as_view(), name='categories-list-create'),
+    path('categoryUD/<int:pk>/', CategoryUpdateDelete.as_view(), name='categories-detail'),
 
     path('Index', views.Index, name='Index'),
     path('products/', views.products),

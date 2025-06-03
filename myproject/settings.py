@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'ckeditor',
+    'rest_framework',
 ]
 STATIC_URL = 'static/'
 

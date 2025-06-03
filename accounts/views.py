@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
+from rest_framework import generics
+from .serializers import ProductSerializer , CategorySerializer
 # Create your views here.
 
 def IndexOgani(request):    
@@ -101,3 +103,24 @@ def Products(request):
         'DTOTblBanners' : DTOTblBanner
     }
     return render(request, 'accounts/Products.html', context)
+
+
+# ListCreateAPIView provides GET (list) and POST (create) actions
+class ProductsListCreate(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+# RetrieveUpdateDestroyAPIView provides GET (retrieve), PUT (update), DELETE (destroy) actions
+class ProductsDetail(generics.RetrieveUpdateDestroyAPIView):    
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+# ListCreateAPIView provides GET (list) and POST (create) actions for Category
+class CategoryListCreate(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+# RetrieveUpdateDestroyAPIView provides GET (retrieve), PUT (update), DELETE (destroy) actions for Category
+class CategoryUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
