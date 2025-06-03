@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+
+    {% include 'accounts/Head.html' %}
+
+</head>
+<body>
+    <div class="container">
+       
+        {% include 'accounts/Banner.html' %}
+
+        {% include 'accounts/Menu.html' %}
+
+        {% include 'accounts/SlideShow.html'%}
+
+        
+
+        
+
+        <div class="row">
+
+            {% include 'accounts/SidebarLeft.html' %}
+
+            <div class="col-lg-8">
+                <h1>Products</h1>
+                
+            </div>
+            
+            {% include 'accounts/SidebarRight.html' %}
+
+        </div>
+
+        {% include 'accounts/Footer.html' %}
+
+        
+    </div>
+
+    
+</body>
+</html>
