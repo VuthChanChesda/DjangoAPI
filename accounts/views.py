@@ -124,3 +124,7 @@ class CategoryListCreate(generics.ListCreateAPIView):
 class CategoryUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+#
+def list_product_api(request):
+    return render(request, 'Ogani/ListProductAPI.html')

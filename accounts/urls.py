@@ -10,7 +10,9 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('blogDetail/', views.blogDetail, name='blogDetail'),
     path('shopGrid/', views.ShopGrid, name='shopGrid'),
-    
+
+    path('list-product-api/', list_product_api, name='list-product-api'),
+
     path('Pros/', ProductsListCreate.as_view(), name='ProList'),
     path('Pros/<int:pk>/', ProductsDetail.as_view(), name='ProDetail'),
     path('categoryLC/', CategoryListCreate.as_view(), name='categories-list-create'),
