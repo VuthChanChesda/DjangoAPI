@@ -75,3 +75,10 @@ class ProductDetailImage(models.Model):
     imageDate = models.DateTimeField(auto_now_add=True, null=True)
     def __str__(self):         
         return self.productDetailImageName
+
+class Book(models.Model):
+    titile = models.CharField(max_length=200, null=True)
+    author = models.CharField(max_length=200, null=True)
+    published_date = models.DateField(null=True)
+    def __str__(self):         
+        return self.titile

@@ -11,7 +11,12 @@ urlpatterns = [
     path('blogDetail/', views.blogDetail, name='blogDetail'),
     path('shopGrid/', views.ShopGrid, name='shopGrid'),
 
-    path('list-product-api/', list_product_api, name='list-product-api'),
+    path('create', views.create_Book, name='create_book'),
+    path('book_list', views.book_list, name='book_list'),
+    path('book_update/<int:pk>/', views.update_book, name='update_book'),
+    path('book_delete/<int:pk>/', views.delete_book, name='delete_book'),
+
+    path('list-product-api/', views.list_product_api, name='list-product-api'),
 
     path('Pros/', ProductsListCreate.as_view(), name='ProList'),
     path('Pros/<int:pk>/', ProductsDetail.as_view(), name='ProDetail'),

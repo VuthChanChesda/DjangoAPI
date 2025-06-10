@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from .models import *
 from rest_framework import generics
@@ -128,3 +128,37 @@ class CategoryUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
 #
 def list_product_api(request):
     return render(request, 'Ogani/ListProductAPI.html')
+
+def create_Book(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        publish_date = request.POST.get('published_date')
+        Book.objects.create(
+            titile=title,
+            author=author,
+            published_date=publish_date
+        )
+        return redirect('book_list')
+    return render(request, 'Ogani/create_book.html')  # Render a form for creating a book
+
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'Ogani/book_list.html', {'books': books})  
+
+def update_book(request, pk):
+    book = Book.objects.get(pk=pk)
+    if request.method == 'POST':
+        book.titile = request.POST.get('title')
+        book.author = request.POST.get('author')
+        book.published_date = request.POST.get('published_date')
+        book.save()
+        return redirect('book_list')
+    return render(request, 'Ogani/update_book.html', {'book': book})  
+
+def delete_book(request, pk):
+    book = Book.objects.get(pk=pk)
+    if request.method == 'POST':
+        book.delete()
+        return redirect('book_list')
+    return render(request, 'Ogani/delete_book.html', {'book': book})
